@@ -13,9 +13,28 @@ void change(int (*a)[N]){
             a[i][j] = i*N + j;
 }
 
+void change_1(int a[N][N]){
+    int i, j;
+    for(i = 0; i < N; i++)
+        for(j = 0; j < N; j++)
+            a[i][j] = i*N;
+}
+
+void recur(int n, char *temp){
+    char *a;
+    a = (char*)malloc(sizeof(int));
+    memset(a, 0, sizeof(int));
+    sprintf(a, "%d", n);
+    strcat(temp, a);
+    strcat(temp, "\n");
+    n--;
+    if(n > 0)
+        recur(n, temp);
+}
+
+
 int main()
 {
-    printf("Hello world!\n");
     int MAX, MIN;
 
     MAX = 10;
@@ -25,8 +44,17 @@ int main()
     int data1[N][N];
     int i, j;
 
-    change(data1);
+    change_1(data1);
 
+    printf("change_1...\n");
+    for(i = 0; i < N; i++){
+        for(j = 0; j < N; j++)
+            printf("%3d ", data1[i][j]);
+        printf("\n");
+    }
+
+    change(data1);
+    printf("change...\n");
     for(i = 0; i < N; i++){
         for(j = 0; j < N; j++)
             printf("%3d ", data1[i][j]);
@@ -48,5 +76,39 @@ int main()
         printf("\n");
 
     }
+
+    FILE *f;
+
+    f = fopen("testfile.txt", "w");
+
+    float c[N][N];
+
+    for(i = 0; i < N; i++)
+        for(j = 0; j < N; j++)
+            c[i][j] = 1.0;
+
+    for(i = 0; i < N; i++){
+        for(j = 0; j < N; j++)
+            fprintf(f, "   %.7e", c[i][j]);
+        fprintf(f, "\n");
+    }
+    fclose(f);
+
+    char testchar[80];
+    strcat(testchar, "test ");
+    strcat(testchar, "strcat.");
+    puts(testchar);
+
+    printf("\n");
+
+    char temp[100] = "";
+    recur(10, temp);
+    printf("%s\n", temp);
+
+    void *ptr;
+    ptr = (int*)10;
+
+    printf("%d", (int)ptr);
+
     return 0;
 }

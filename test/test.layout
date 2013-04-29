@@ -4,7 +4,7 @@
 	<File name="extern.c" open="0" top="0" tabpos="5">
 		<Cursor position="50" topLine="0" />
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="4">
-		<Cursor position="753" topLine="28" />
+	<File name="main.c" open="1" top="1" tabpos="0">
+		<Cursor position="2077" topLine="45" />
 	</File>
 </CodeBlocks_layout_file>
